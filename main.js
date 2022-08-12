@@ -65,4 +65,22 @@ theAddButton.onclick=function(){
           theInput.value="";
 
     }
+};
+document.addEventListener('click',function(e){
+
+
+//Delete Task
+
+if(e.target.className=='delete'){
+
+    //remove Current Task
+e.target.parentNode.remove();
 }
+
+//Finsh Task
+if (e.target.classList.contains("task-box")) {
+    e.target.classList.toggle("finished");
+}
+
+
+});
