@@ -4,7 +4,7 @@
 let theInput = document.querySelector(".add-task input");
 let theAddButton = document.querySelector(".add-task .plus");
 let tasksContainer = document.querySelector(".tasks-content");
-let noTask = document.querySelector(".no-tasks");
+
 let tasksCount = document.querySelector(".tasks-count span");
 let tasksCompleted = document.querySelector(".tasks-completed span");
 
@@ -25,7 +25,13 @@ theAddButton.onclick=function(){
         alert("No Value")
     }
     else{
-        noTask.remove();
+
+        let noTask = document.querySelector(".no-tasks");
+
+        if (document.body.contains(document.querySelector(".no-tasks"))) {
+            
+            noTask.remove();
+        }
         //Create Span Element
 
         let mainSpan=document.createElement("span");
@@ -63,6 +69,8 @@ theAddButton.onclick=function(){
 
           tasksContainer.appendChild(mainSpan);
           theInput.value="";
+          theInput.focus();
+          CalcTasks();
 
     }
 };
@@ -75,12 +83,50 @@ if(e.target.className=='delete'){
 
     //remove Current Task
 e.target.parentNode.remove();
+
+//check number Of Tasks 
+
+if (tasksContainer.childElementCount==0) {
+    CreateNoTasks();
+}
 }
 
 //Finsh Task
 if (e.target.classList.contains("task-box")) {
     e.target.classList.toggle("finished");
 }
-
+CalcTasks();
 
 });
+
+
+//Function ToCreate No Tasks
+
+function CreateNoTasks(){
+    let msgSpan=document.createElement("span");
+
+    let msgtext=document.createTextNode("No Tasks To Show");
+
+    msgSpan.appendChild(msgtext);
+
+    msgSpan.className="no-tasks";
+
+    tasksContainer.appendChild(msgSpan);
+
+
+}
+
+//Function To Calc Tasks
+
+
+function CalcTasks()
+{
+    //calc all Tasks
+    tasksCount.innerHTML=document.querySelectorAll(".tasks-content .task-box").length;
+
+
+    //calc Completed Tasks
+
+    tasksCompleted.innerHTML=document.querySelectorAll(".tasks-content .finished").length;
+
+}
