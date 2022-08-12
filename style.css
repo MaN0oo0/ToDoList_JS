@@ -52,3 +52,56 @@ body{
     color: #777;
     font-size: 15px;
 }
+.todo-container .tasks-content >span{
+    display: block;
+    background-color: #fff;
+    padding: 10px;
+
+}
+.todo-container .tasks-content >span:not(:last-child){
+    margin-bottom: 10px;
+}
+.todo-container .tasks-content .task-box .delete{
+    float: right;
+    background-color: #E91e63;
+    padding: 4px 10px ;
+    color: white;
+    font-weight: bold;
+    border-radius: 4px;
+    font-size: 12px;
+    cursor: pointer;
+}
+.todo-container .tasks-content .task-box.finished{
+    text-decoration: line-through;
+}
+.task-stats{
+    overflow: hidden;
+    margin: 10px auto;
+    width: 600px;
+    font-size: 12px;
+
+}
+.task-stats .tasks-count{
+    width: 50%;
+    float: left;
+    padding: 10px;
+}
+.task-stats .tasks-completed{
+    width: 50%;
+    float: right;
+    padding: 10px;
+    text-align: right;
+}
+.task-stats .tasks-completed span,.task-stats .tasks-count span{
+    color: white;
+    padding: 1px 5px;
+    font-size: 10px;
+    border-radius: 4px;
+    font-weight: bold;
+}
+.task-stats .tasks-count span{
+background-color: #E91e63;
+}
+.task-stats .tasks-completed span{
+    background-color: #03a903;
+}
